@@ -1,0 +1,119 @@
+# TP Programmation en C : Introduction au traitement d'images
+
+L'objectif de ce notebook est de vous permettre de faire un compte-rendu de votre TP traitement d'image. 
+Il s'agit une fois votre programme mis au point de copier coller le code, et le résultats de vos tests. 
+
+### ATTENTION : 
+- N’oubliez pas de travailler sous le répertoire sauvegardé sur le serveur dont le chemin est de la forme : /home/abc1234a/Documents
+
+- Lors de QCM vous devrez réutiliser votre code.Il faut donc pouvoir le retrouver.  
+
+### COUFFIN MANON : 
+
+
+## PARTIE 1- Editer, compiler et tester un programme
+
+  191  date
+  192  cd /home/cfm3663a/Documents/
+  193  cd tp_info/TP_TRAITEMENTIMAGE/
+  194  clear
+  195  date
+  196  mkdir TPC
+  197  ls
+  198  cd TPC/
+  199  mkdir COUFFIN_TP_IMAGE
+  200  ls
+  201  cd COUFFIN_TP_IMAGE/
+  202  mkdir Test
+  203  mkdir Data
+  204  ls
+  205  cd Data/
+  206  cd ..
+  207  cd TP_TRAITEMENTIMAGE/
+  208  cp image1.dat Data
+  209  cp image2.dat Data
+  210  cd TPC/COUFFIN_TP_IMAGE/Data/
+  211  ls
+  212  cp image1.dat Data
+  213  cat image1.dat 
+  214  cat image2.dat 
+  215  cd ..
+  216  cd TPC/COUFFIN_TP_IMAGE/
+  217  history
+
+
+## PROGRAMME transform_image.c
+
+
+(a) le résultat de la commande date
+(b) 
+#include <stdio.h>
+
+int main()
+{
+    int ligne, colonne, valeur, i, j;
+    scanf("%d", &ligne);
+    scanf("%d", &colonne);
+    for (i =0; i<ligne; i++)
+    {
+      		for(j=0; j<colonne; j++)
+			{
+				scanf("%d", &valeur);
+				if(valeur<64)
+					valeur = 0;
+				else if(valeur<128)
+					valeur = 1;
+				else if(valeur<192)
+					valeur = 2;
+				else if(valeur<256)
+					valeur = 3;
+				printf("%d ", valeur);
+			}
+		printf("\n");
+	}
+    
+
+    return 0;
+}
+
+(c) la commande de compilation et son résultat 
+
+gcc transform_image.c -o transform_image.out
+
+(d) le résultat des tests sur les fichiers de données
+
+0 0 0 0 0 0 0 0 
+0 0 0 0 0 2 2 0 
+0 0 0 0 2 2 0 0 
+0 0 0 0 0 2 2 0 
+0 1 0 0 0 2 0 0 
+0 1 0 0 0 2 0 0 
+0 1 1 0 2 2 2 0 
+0 0 0 0 0 0 0 0
+
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 
+0 0 0 0 1 1 1 1 1 1 1 1 0 0 0 0 
+0 0 0 0 1 1 1 1 1 1 1 1 0 0 0 0 
+0 0 0 0 1 1 1 1 1 1 1 1 0 0 0 0 
+0 0 0 0 1 1 1 1 1 1 1 1 0 0 0 0 
+0 0 0 0 1 1 1 1 1 1 1 1 0 0 0 0 
+0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+
+(e) le contenu du répertoire TPC (fichiers et sous-répertoires)
+
+[cfm3663a@u3-209-15l TPC]$ ls
+COUFFIN_TP_IMAGE
+[cfm3663a@u3-209-15l TPC]$ cd COUFFIN_TP_IMAGE/
+[cfm3663a@u3-209-15l COUFFIN_TP_IMAGE]$ ls
+Data  Test  transform_image.c  transform_image.c~  transform_image.out
+
